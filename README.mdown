@@ -6,6 +6,7 @@ The Google Image Resizer appears to be a service provided to support Google+, al
 
 Case 1: The typical case
   * Simply add a **width** value and the **resizer** option to the options array.
+  
   $this->Html->image($url, array('width'=>60, 'resizer'));
 
 Case 2: You want ALL images to go thru the resizer
