@@ -1,0 +1,57 @@
+# Resizer (Google Image Resizer)
+
+**Resizer** is a plugin for the Croogo CMS used to create image tags within view templates which utilize the (undocumented) Google Image Resizer. It is released under the [MIT License](LICENSE.txt).
+
+The Google Image Resizer appears to be a service provided to support Google+, although at this point it doesn't require any authentication. Of course, this situation could change at any moment, therefore I've tried to design the options such that if they change the service, by simply disabling the plugin, your site will again work as intended. I've included a brief "best practice" here:
+
+Case 1: The typical case
+  * Simply add a **width** value and the **resizer** option to the options array.
+  $this->Html->image($url, array('width'=>60, 'resizer'));
+
+Case 2: You want ALL images to go thru the resizer
+  * This setting eliminates the need for the resizer option, but still requires a width (and/or a height) value.
+  * First, go thru your templates and set a width (or height) for each image you are calling. The reason I say this is that if Google determines that too many people are using this as a full-size content delivery service, they might lock it down. Be a good steward of your resources and set a smaller size limit.
+  * Next, go to the Settings > Service panel and turn on the "Apply Google Resizer to all images" option.
+  * If you have lots of images that you will be displaying full-size, this is NOT the way to go (see resources comment above).
+
+Notes:
+  * This plugin only affects image tags that are generated via a call to Html->image(). There is nothing special here to go thru images embedded in content and change tags there.
+  * As far as I can tell this does not undermine the concepts of responsive design. The HTML 'width' attribute added to your image tags as described in my best practices, gets overridden by your various CSS @media directives, so this should not interfere. Be sure to set it as large as the largest size that your @media directives call for. (ie. if your @media (min-width: 400px) displays your image at 180px, and your @media (min-width: 600px) displays it as 240px, then set the width to 240.)
+  * This is based on [research by Carlo Zottmann](http://carlo.zottmann.org/2013/04/14/google-image-resizer/). Thank you!
+
+It is powered by the [Croogo](http://croogo.org) CMS framework.
+
+## Requirements
+  * Croogo 2.0.0+
+
+## Installation
+
+#### Web based installer
+
+  * Go to Admin > Extensions > Plugins.
+  * Upload the file using the Upload link.
+
+#### Manual installation
+
+  * Extract the archive to the Plugin/Resizer directory.
+
+#### Installation using git
+
+  * TBD
+
+#### Activation
+
+  * Go to Admin > Extensions > Plugins.
+  * Click on the activate icon to enable it.
+
+## Todo
+
+  * Add a cron-able Console Shell to test the validity / availability of the Google image service.
+
+## Links
+
+  * TBD
+  * **Official website**: [https://github.com/miketallroth/croogo-resizer](https://github.com/miketallroth/croogo-resizer)
+  * **Downloads**: [https://github.com/miketallroth/croogo-resizer/archive/master.zip](https://github.com/miketallroth/croogo-resizer/archive/master.zip)
+  * **Issue Tracker**: [https://github.com/miketallroth/croogo-resizer/issues](https://github.com/miketallroth/croogo-resizer/issues)
+  * **Wiki**: [https://github.com/miketallroth/croogo-resizer/wiki](https://github.com/miketallroth/croogo-resizer/wiki)

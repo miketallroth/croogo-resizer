@@ -1,0 +1,13 @@
+{
+	"name": "Resizer",
+	"description": "Google Image Resizer",
+
+	"author": "Mike Tallroth",
+
+	"dependencies": {
+		"plugins": [
+			"extensions"
+		]
+    }
+
+}
