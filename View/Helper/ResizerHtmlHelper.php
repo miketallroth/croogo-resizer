@@ -74,7 +74,10 @@ class ResizerHtmlHelper extends HtmlHelper {
 
         // build the new url then send it on to parent's tag builder
         $app = $this->resize_app;
-        $url = '?url=' . urlencode(html_entity_decode($this->url($path,true)));
+        $url = '?url=' . urlencode(html_entity_decode($this->assetUrl($path,array(
+            'fullBase'=>true,
+            'pathPrefix' => Configure::read('App.imageBaseUrl'),
+        ))));
         $container = '&container=' . $settings['resizer']['container'];
         $refresh = '&refresh=' . $settings['resizer']['refresh'];
 
